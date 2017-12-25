@@ -11,7 +11,7 @@ namespace The_Planet_Forge_AGAIN.input
     {
         internal void Update(KeyboardState keyboardState)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

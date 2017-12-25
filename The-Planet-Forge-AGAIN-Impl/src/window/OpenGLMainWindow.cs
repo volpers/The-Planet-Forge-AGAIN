@@ -40,14 +40,14 @@ namespace The_Planet_Forge_AGAIN.window
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
-            base.OnUpdateFrame(e);
-            game.Update();
+            base.OnUpdateFrame(e);            
+            game.Update(e);
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
-            game.Render();
+            game.Render(e);
             Title = $"(Vsync: {VSync}) FPS: {1f / e.Time:0}";
         }
 

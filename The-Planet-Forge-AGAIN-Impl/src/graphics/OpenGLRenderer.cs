@@ -33,8 +33,7 @@ namespace The_Planet_Forge_AGAIN.graphics
             backColor.B = 0.3f;
             GL.ClearColor(backColor);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-            SwapBuffers();
+            
         }
 
         public override void Update()

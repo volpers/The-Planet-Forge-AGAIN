@@ -13,6 +13,9 @@ using The_Planet_Forge_AGAIN.input;
 
 namespace The_Planet_Forge_AGAIN.game
 {
+    /// <summary>
+    /// The basic Game-Class
+    /// </summary>
     public class Game
     {
         private GraphicsFactory graphicsFactory = new GraphicsFactory();
@@ -20,6 +23,10 @@ namespace The_Planet_Forge_AGAIN.game
 
         private OpenGLRenderer renderer;
         private OpenGLInputHandler input;
+
+        private double timeToNextUpdateTick = 0d;
+        private double timeToNextFrameTick = 0d;
+
 
         public Game()
         {
@@ -32,15 +39,23 @@ namespace The_Planet_Forge_AGAIN.game
             renderer.Initialize();
         }
 
-        internal void Update()
+        internal void Update(FrameEventArgs e)
         {
-            input.Update(Keyboard.GetState());
-            renderer.Update();
+            timeToNextUpdateTick += e.Time;
+            if(timeToNextUpdateTick >= GameConstants.SECS_PER_UPDATE) { 
+                input.Update(Keyboard.GetState());
+                renderer.Update();
+                timeToNextUpdateTick = 0d;
+            }
         }
 
-        internal void Render()
+        internal void Render(FrameEventArgs e)
         {
-            renderer.Render();
+            timeToNextFrameTick += e.Time;
+            if(timeToNextFrameTick >= GameConstants.SECS_PER_FRAME) { 
+                renderer.Render();
+                timeToNextFrameTick = 0d;
+            }
         }
 
         internal void Exit()

@@ -1,0 +1,10 @@
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\bin\Debug\res\shaders\fragment.fs
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\bin\Debug\res\shaders\vertex.vs
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\bin\Debug\The-Planet-Forge-AGAIN-Test.dll
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\bin\Debug\The-Planet-Forge-AGAIN-Test.pdb
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\bin\Debug\nunit.framework.dll
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\bin\Debug\nunit.framework.xml
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\obj\Debug\The-Planet-Forge-AGAIN-Test.csprojResolveAssemblyReference.cache
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\obj\Debug\The-Planet-Forge-AGAIN-Test.csproj.CoreCompileInputs.cache
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\obj\Debug\The-Planet-Forge-AGAIN-Test.dll
+C:\Users\nklei\Documents\GitHub\The-Planet-Forge-AGAIN\The-Planet-Forge-AGAIN-Test\obj\Debug\The-Planet-Forge-AGAIN-Test.pdb

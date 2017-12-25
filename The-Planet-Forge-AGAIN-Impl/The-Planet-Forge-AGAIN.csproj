@@ -69,15 +69,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="game\Game.cs" />
-    <Compile Include="graphics\BaseRenderer.cs" />
-    <Compile Include="graphics\GraphicsFactory.cs" />
-    <Compile Include="graphics\OpenGLRenderer.cs" />
-    <Compile Include="input\InputFactory.cs" />
-    <Compile Include="input\OpenGLInputHandler.cs" />
+    <Compile Include="src\game\Game.cs" />
+    <Compile Include="src\game\GameConstants.cs" />
+    <Compile Include="src\graphics\BaseRenderer.cs" />
+    <Compile Include="src\graphics\GraphicsFactory.cs" />
+    <Compile Include="src\graphics\OpenGLRenderer.cs" />
+    <Compile Include="src\graphics\shader\ShaderProgram.cs" />
+    <Compile Include="src\input\InputFactory.cs" />
+    <Compile Include="src\input\OpenGLInputHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="window\OpenGLMainWindow.cs" />
+    <Compile Include="src\utils\Utils.cs" />
+    <Compile Include="src\window\OpenGLMainWindow.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,6 +101,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="res\shaders\fragment.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="res\shaders\vertex.vs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -114,5 +123,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
