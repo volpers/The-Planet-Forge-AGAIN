@@ -27,11 +27,13 @@ namespace The_Planet_Forge_AGAIN.game
         private double timeToNextUpdateTick = 0d;
         private double timeToNextFrameTick = 0d;
 
+        private readonly GameWindow window;
 
-        public Game()
+        public Game(GameWindow window)
         {
-            renderer = graphicsFactory.CreateOpenGLRenderer();
+            renderer = graphicsFactory.CreateOpenGLRenderer(window);
             input = inputFactory.CreateOpenGLInputHandler();
+            this.window = window;
         }
 
         internal void OnLoad()
@@ -44,6 +46,7 @@ namespace The_Planet_Forge_AGAIN.game
             timeToNextUpdateTick += e.Time;
             if(timeToNextUpdateTick >= GameConstants.SECS_PER_UPDATE) { 
                 input.Update(Keyboard.GetState());
+                GL.ClearColor(Color4.AliceBlue);
                 renderer.Update();
                 timeToNextUpdateTick = 0d;
             }
@@ -60,12 +63,12 @@ namespace The_Planet_Forge_AGAIN.game
 
         internal void Exit()
         {
-            renderer.Dispose();
+            renderer.CleanUp();
         }
 
         internal void OnClosed()
         {
-            renderer.Dispose();   
+            renderer.CleanUp();   
         }
     }
 }

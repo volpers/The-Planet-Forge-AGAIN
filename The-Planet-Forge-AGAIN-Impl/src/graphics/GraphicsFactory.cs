@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace The_Planet_Forge_AGAIN.graphics
 {
     public class GraphicsFactory
     {
-        public OpenGLRenderer CreateOpenGLRenderer() {
-            return new OpenGLRenderer();
+        public OpenGLRenderer CreateOpenGLRenderer(GameWindow window) {
+            return new OpenGLRenderer(window);
         }
     }
 }

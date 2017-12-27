@@ -7,38 +7,114 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL4;
+using The_Planet_Forge_AGAIN.src.graphics.shader;
+using The_Planet_Forge_AGAIN.src.utils;
 
 namespace The_Planet_Forge_AGAIN.graphics
 {
-    public class OpenGLRenderer : BaseRenderer
+    public class OpenGLRenderer
     {
-        public override void Dispose()
-        {
-            
+        private ShaderProgram shaderProgram;
+
+        private int vboId;
+
+        private int vaoId;
+
+        private readonly GameWindow window;
+
+        public OpenGLRenderer(GameWindow window) {
+            this.window = window;
         }
 
-        public override void Initialize()
+        public void Initialize()
         {
-            
+            window.Resize += OnWindowResized;
+
+            shaderProgram = new ShaderProgram();
+            shaderProgram.CreateVertexShader(Utils.ReadResource("res/shaders/vertex.vs"));
+            shaderProgram.CreateFragmentShader(Utils.ReadResource("res/shaders/fragment.fs"));
+            shaderProgram.Link();
+
+            Vector3[] vertices = new Vector3[]
+            {
+                new Vector3(0.0f, 0.5f, 0.0f),
+                new Vector3(-0.5f, -0.5f, 0.0f),
+                new Vector3(0.5f, -0.5f, 0.0f)
+            };
+            try
+            {
+                //Create the Vertex Array Object
+                GL.GenVertexArrays(1, out vaoId);
+                GL.BindVertexArray(vaoId);
+
+                //Create the Vertex Buffer Object
+                GL.GenBuffers(1, out vboId);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, vboId);
+                GL.BufferData(BufferTarget.ArrayBuffer, Vector3.SizeInBytes * vertices.Length, vertices, BufferUsageHint.StaticDraw);
+
+                //Define structure of the data
+                GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, 0);
+
+                //Unbind VBO and VAO
+                GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+                GL.BindVertexArray(0);
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+            }
+        }       
+
+        public void Render()
+        {
+            Clear();
+            shaderProgram.Bind();
+
+            //Bind the VAO
+            GL.BindVertexArray(vaoId);
+            GL.EnableVertexAttribArray(0);
+
+            //Draw the vertices
+            GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+
+            //Reset everything
+            GL.DisableVertexAttribArray(0);
+            GL.BindVertexArray(0);
+
+            shaderProgram.Unbind();
         }
 
-        public override void Render()
+        public void Update()
         {
-            
 
-            Color4 backColor;
-            backColor.A = 1.0f;
-            backColor.R = 0.1f;
-            backColor.G = 0.1f;
-            backColor.B = 0.3f;
-            GL.ClearColor(backColor);
+        }
+
+        public void Clear()
+        {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            
         }
 
-        public override void Update()
+        public void CleanUp()
         {
+            if (shaderProgram != null)
+            {
+                shaderProgram.CleanUp();
+            }
 
+            GL.DisableVertexAttribArray(0);
+
+            //Delete VBO
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.DeleteBuffer(vboId);
+
+            //Delete VAO
+            GL.BindVertexArray(0);
+            GL.DeleteVertexArray(vboId);
+        }
+
+        private void OnWindowResized(object sender, EventArgs e)
+        {
+            GL.Viewport(0, 0, window.Width, window.Height);
         }
     }
 }

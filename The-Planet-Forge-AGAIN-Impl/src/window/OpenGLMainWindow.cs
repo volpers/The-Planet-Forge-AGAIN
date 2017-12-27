@@ -28,7 +28,8 @@ namespace The_Planet_Forge_AGAIN.window
             0, // OpenGL minor version
             GraphicsContextFlags.ForwardCompatible)
         {
-            Title += ": OpenGL Version: " + GL.GetString(StringName.Version);        
+            Title += ": OpenGL Version: " + GL.GetString(StringName.Version);
+            game = new Game(this);
         }
         
         protected override void OnLoad(EventArgs e)
@@ -54,7 +55,7 @@ namespace The_Planet_Forge_AGAIN.window
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            GL.Viewport(0, 0, Width, Height);
+            //GL.Viewport(0, 0, Width, Height);
         }       
 
         public override void Exit()

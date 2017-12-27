@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="src\game\Game.cs" />
     <Compile Include="src\game\GameConstants.cs" />
-    <Compile Include="src\graphics\BaseRenderer.cs" />
     <Compile Include="src\graphics\GraphicsFactory.cs" />
     <Compile Include="src\graphics\OpenGLRenderer.cs" />
     <Compile Include="src\graphics\shader\ShaderProgram.cs" />
