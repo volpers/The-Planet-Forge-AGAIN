@@ -74,6 +74,7 @@
     <Compile Include="src\graphics\GraphicsFactory.cs" />
     <Compile Include="src\graphics\OpenGLRenderer.cs" />
     <Compile Include="src\graphics\shader\ShaderProgram.cs" />
+    <Compile Include="src\graphics\structs\Vertex.cs" />
     <Compile Include="src\input\InputFactory.cs" />
     <Compile Include="src\input\OpenGLInputHandler.cs" />
     <Compile Include="Program.cs" />

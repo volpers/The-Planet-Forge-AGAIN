@@ -10,7 +10,7 @@ namespace The_Planet_Forge_AGAIN.src.utils
     {
         public static string ReadResource(string path)
         {
-            string filePath = System.IO.Directory.GetCurrentDirectory() + "/" + path;
+            string filePath = @"/" + path;
             string result = "";
             try
             {

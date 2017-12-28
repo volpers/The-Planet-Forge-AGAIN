@@ -8,6 +8,7 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL4;
 using The_Planet_Forge_AGAIN.src.graphics.shader;
+using The_Planet_Forge_AGAIN.src.graphics.structs;
 using The_Planet_Forge_AGAIN.src.utils;
 
 namespace The_Planet_Forge_AGAIN.graphics
@@ -35,12 +36,13 @@ namespace The_Planet_Forge_AGAIN.graphics
             shaderProgram.CreateFragmentShader(Utils.ReadResource("res/shaders/fragment.fs"));
             shaderProgram.Link();
 
-            Vector3[] vertices = new Vector3[]
+            Vertex[] vertices = new Vertex[]
             {
-                new Vector3(0.0f, 0.5f, 0.0f),
-                new Vector3(-0.5f, -0.5f, 0.0f),
-                new Vector3(0.5f, -0.5f, 0.0f)
+                new Vertex(0.0f, 0.5f, 0.0f),
+                new Vertex(-0.5f, -0.5f, 0.0f),
+                new Vertex(0.5f, -0.5f, 0.0f)
             };
+
             try
             {
                 //Create the Vertex Array Object
@@ -50,7 +52,7 @@ namespace The_Planet_Forge_AGAIN.graphics
                 //Create the Vertex Buffer Object
                 GL.GenBuffers(1, out vboId);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vboId);
-                GL.BufferData(BufferTarget.ArrayBuffer, Vector3.SizeInBytes * vertices.Length, vertices, BufferUsageHint.StaticDraw);
+                GL.BufferData(BufferTarget.ArrayBuffer, Vertex.SIZE * vertices.Length, vertices, BufferUsageHint.StaticDraw);
 
                 //Define structure of the data
                 GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, 0);
@@ -67,7 +69,6 @@ namespace The_Planet_Forge_AGAIN.graphics
 
         public void Render()
         {
-            Clear();
             shaderProgram.Bind();
 
             //Bind the VAO
@@ -82,6 +83,10 @@ namespace The_Planet_Forge_AGAIN.graphics
             GL.BindVertexArray(0);
 
             shaderProgram.Unbind();
+
+            GL.ClearColor(Color4.AliceBlue);
+            Clear();           
+            
         }
 
         public void Update()

@@ -45,8 +45,7 @@ namespace The_Planet_Forge_AGAIN.game
         {
             timeToNextUpdateTick += e.Time;
             if(timeToNextUpdateTick >= GameConstants.SECS_PER_UPDATE) { 
-                input.Update(Keyboard.GetState());
-                GL.ClearColor(Color4.AliceBlue);
+                input.Update(Keyboard.GetState());               
                 renderer.Update();
                 timeToNextUpdateTick = 0d;
             }

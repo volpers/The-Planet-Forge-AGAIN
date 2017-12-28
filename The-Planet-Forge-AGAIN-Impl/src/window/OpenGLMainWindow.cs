@@ -48,13 +48,16 @@ namespace The_Planet_Forge_AGAIN.window
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
-            game.Render(e);
+
             Title = $"(Vsync: {VSync}) FPS: {1f / e.Time:0}";
+            game.Render(e);
+
+            SwapBuffers();
         }
 
         protected override void OnResize(EventArgs e)
         {
-            base.OnResize(e);
+            base.OnResize(e);            
             //GL.Viewport(0, 0, Width, Height);
         }       
 
